@@ -1,0 +1,32 @@
+services:
+
+  # Backend API
+  smartbrainapi:
+    container_name: backend
+    build: ./
+    command: npm start
+    working_dir: /usr/src/smartbrainapi
+    environment:
+      POSTGRES_URI: postgres://admin:password@postgres:5432/smartbrain
+      REDIS_URI: redis://redis:6379
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/smartbrainapi
+    
+  # Postgres
+  postgres:
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: smartbrain
+      POSTGRES_HOST: postgres
+    build: ./postgres
+    ports:
+      - "5432:5432"
+
+  # Redis
+  redis:
+    image: redis
+    ports: 
+      - "6379:6379"
