@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(morgan('combined'))
 app.use(cors());
 
-app.post('/',(req, res)=>{res.json({"success": "true"})})
+app.get('/',(req, res)=>{res.json({"success": "true"})})
 app.post('/signin', signinAuthentication(db, bcrypt)) //Dependency Injection
 app.post('/register', register(db, bcrypt))
 app.get('/profile/:id', requireAuth, (req, res)=>{handleProfileGet(req, res, db)})
