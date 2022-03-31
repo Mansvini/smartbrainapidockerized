@@ -32,8 +32,8 @@ app.put('/image', requireAuth, (req, res)=>{handleImage(req, res, db)})
 app.post('/imageurl', requireAuth, (req, res)=>{handleApiCall(req, res)})
 app.put('/signout', requireAuth, (req, res)=>{handleSignOut(req, res)})
 
-app.listen(80,()=>{
-	console.log(`app is running on port 80`);
+app.listen(3000,()=>{
+	console.log(`app is running on port 3000`);
 });
 
 export default redisClient;
