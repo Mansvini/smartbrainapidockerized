@@ -24,13 +24,13 @@ app.use(morgan('combined'))
 app.use(cors());
 
 app.get('/',(req, res)=>{res.send('it is working')})
-app.post('/signin', signinAuthentication(db, bcrypt)) //Dependency Injection
-app.post('/register', register(db, bcrypt))
-app.get('/profile/:id', requireAuth, (req, res)=>{handleProfileGet(req, res, db)})
-app.post('/profile/:id', requireAuth, (req, res)=>{handleProfileUpdate(req, res, db)})
-app.put('/image', requireAuth, (req, res)=>{handleImage(req, res, db)})
-app.post('/imageurl', requireAuth, (req, res)=>{handleApiCall(req, res)})
-app.put('/signout', requireAuth, (req, res)=>{handleSignOut(req, res)})
+app.post('/signin', cors(), signinAuthentication(db, bcrypt)) //Dependency Injection
+app.post('/register', cors(), register(db, bcrypt))
+app.get('/profile/:id', cors(), requireAuth, (req, res)=>{handleProfileGet(req, res, db)})
+app.post('/profile/:id', cors(), requireAuth, (req, res)=>{handleProfileUpdate(req, res, db)})
+app.put('/image', cors(), requireAuth, (req, res)=>{handleImage(req, res, db)})
+app.post('/imageurl',cors(), requireAuth, (req, res)=>{handleApiCall(req, res)})
+app.put('/signout', cors(), requireAuth, (req, res)=>{handleSignOut(req, res)})
 
 app.listen(3000,()=>{
 	console.log(`app is running on port 3000`);
