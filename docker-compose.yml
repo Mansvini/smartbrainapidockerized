@@ -10,7 +10,7 @@ services:
       POSTGRES_URI: postgres://admin:password@postgres:5432/smartbrain
       REDIS_URI: redis://redis:6379
     ports:
-      - "443:443"
+      - "80:80"
     volumes:
       - ./:/usr/src/smartbrainapi
     
