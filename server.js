@@ -32,7 +32,7 @@ app.put('/image', cors(), requireAuth, (req, res)=>{handleImage(req, res, db)})
 app.post('/imageurl',cors(), requireAuth, (req, res)=>{handleApiCall(req, res)})
 app.put('/signout', cors(), requireAuth, (req, res)=>{handleSignOut(req, res)})
 
-app.listen(80,()=>{
+app.listen(3000,()=>{
 	console.log(`app is running on port 80`);
 });
 
